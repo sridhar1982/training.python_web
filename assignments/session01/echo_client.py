@@ -4,16 +4,19 @@ import sys
 
 def client(msg, log_buffer=sys.stderr):
     server_address = ('localhost', 10000)
+    #print server_address
     # TODO: Replace the following line with your code which will instantiate 
     #       a TCP socket with IPv4 Addressing, call the socket you make 'sock'
-    sock = None
+    sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM,socket.IPPROTO_IP)
+    
     print >>log_buffer, 'connecting to {0} port {1}'.format(*server_address)
     # TODO: connect your socket to the server here.
-
+    sock.connect(server_address)
     # this try/finally block exists purely to allow us to close the socket
     # when we are finished with it
     try:
         print >>log_buffer, 'sending "{0}"'.format(msg)
+        sock.sendall(msg)
         # TODO: send your message to the server here.
 
         # TODO: the server should be sending you back your message as a series
@@ -25,11 +28,17 @@ def client(msg, log_buffer=sys.stderr):
         #       Make sure that you log each chunk you receive.  Use the print 
         #       statement below to do it. (The tests expect this log format)
         chunk = ''
-        print >>log_buffer, 'received "{0}"'.format(chunk)
+        done=False;
+        while not done:
+          chunk=sock.recv(16)
+          print >>log_buffer, 'received "{0}"'.format(chunk)
+          if len(chunk)<16:
+            done=True
     finally:
         # TODO: after you break out of the loop receiving echoed chunks from 
         #       the server you will want to close your client socket.
         print >>log_buffer, 'closing socket'
+        sock.close()
 
 
 if __name__ == '__main__':
