@@ -3,7 +3,7 @@ import sys
 
 
 def client(msg, log_buffer=sys.stderr):
-    server_address = ('localhost', 10000)
+    server_address = ('172.16.30.208', 10000)
     #print server_address
     # TODO: Replace the following line with your code which will instantiate 
     #       a TCP socket with IPv4 Addressing, call the socket you make 'sock'
