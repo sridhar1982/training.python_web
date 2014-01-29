@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import cgi
-import cgitb
-cgitb.enable()
+#import cgitb
+#cgitb.enable()
 import os
 import datetime
 
@@ -32,12 +32,12 @@ The request arrived at %s<br>
 </body>
 </html>""" % (
         os.environ.get('SERVER_NAME', default), # Server Hostname
-        'aaaa', # server IP
-        'bbbb', # server port
-        'cccc', # client hostname
+        os.environ.get('REMOTE_ADDR',default),
+        os.environ.get('REMOTE_ADDR',default), # server port
+        os.environ.get('REMOTE_HOST',default), # client hostname
         'dddd', # client IP
         'eeee', # client port
-        'ffff', # this script name
+        os.environ.get('SCRIPT_NAME',default), # this script name
         'gggg', # time
         )
 

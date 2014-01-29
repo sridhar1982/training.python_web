@@ -8,7 +8,7 @@ from StringIO import StringIO
 
 class EbayLookup(object):
 
-    apikey='INSERT1'
+    apikey='Mycompan-7f38-4f11-a008-67694d08f7b1'
 
     def __init__(self):
          self.api_url='http://svcs.ebay.com/services/search/FindingService/v1'
@@ -50,9 +50,9 @@ parameters = {
 class AmazonLookup(object):
 
     config = {
-    'access_key': 'INSERT 2',
-    'secret_key': 'INSERT 3',
-    'associate_tag': 'INSERT 4',
+    'access_key': 'AKIAIKB4DUV5OXRK2FZQ',
+    'secret_key': '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',
+    'associate_tag': 'wwwmywebpageat-20',
     'locale': 'us'
      }
 
