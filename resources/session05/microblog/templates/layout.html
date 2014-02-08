@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>  <!-- you only need to add the <link> below -->
+  <title>Flaskr</title>
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+</head>
+  <body>
+    <h1>My Microblog</h1>
+    <div class=metanav>
+  {% if not session.logged_in %}
+    <a href="{{ url_for('login') }}">log in</a>
+  {% else %}
+    <a href="{{ url_for('logout') }}">log out</a>
+  {% endif %}
+  </div>
+    <div class="content">
+    {% block body %}{% endblock %}
+    </div>
+  </body>
+</html>
+
+
